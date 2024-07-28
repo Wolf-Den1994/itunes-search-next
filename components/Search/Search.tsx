@@ -31,7 +31,7 @@ export const Search = () => {
             ) : (
                 <input type="search" placeholder="Search..." value={searchValue}
                        onChange={handleChange}
-                       className="bg-gray-500 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-white-600 focus:border-white-600 block w-1/2 p-2"/>
+                       className="bg-gray-500 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-white-600 focus:border-white-600 block w-full sm:w-1/2 p-2/2 p-2"/>
             )}
             {error && <p>Oops, error: ${error}</p>}
         </>

@@ -6,7 +6,7 @@ import { Filter } from "@/components/Filter";
 
 export default function Home() {
     return (
-        <main className="flex min-h-[calc(100vh-56px)] flex-col items-center justify-start gap-12 p-24">
+        <main className="flex min-h-[calc(100vh-56px)] flex-col items-center justify-start gap-4 sm:gap-12 p-6 sm:p-24">
             <Search />
             <Filter />
             <List />
