@@ -7,23 +7,14 @@ import { useMedia } from "@/store";
 
 export const Search = () => {
     const [searchValue, setSearchValue] = useState("");
-    const [error, setError] = useState('');
     const debouncedSearch = useDebounce(searchValue, 600)
 
-    const [getMediaBySearch, isLoading] = useMedia((state) => [
-        state.getMediaBySearch, state.isLoading
+    const [getMediaBySearch, isLoading, error] = useMedia((state) => [
+        state.getMediaBySearch, state.isLoading, state.error
     ])
 
     const fetchMediaBySearch = useMemo(() => async () => {
-        setError('')
-
-        try {
-            await getMediaBySearch(searchValue)
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                setError(error.message)
-            }
-        }
+        await getMediaBySearch(searchValue)
     }, [searchValue])
 
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value), [])

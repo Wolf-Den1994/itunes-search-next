@@ -6,14 +6,22 @@ type UseMedia = {
     data: MediaResult[],
     isLoading: boolean,
     getMediaBySearch: (search: string) => Promise<void>,
+    error: string,
 }
 
 export const useMedia = createWithEqualityFn<UseMedia>((set) => ({
     data: [],
     isLoading: false,
+    error: '',
     getMediaBySearch: async (search: string) => {
-        set({isLoading: true})
-        const data = await getMediaBySearch(search);
-        set({isLoading: false, data: data.results})
+        try {
+            set({isLoading: true, error: ''})
+            const data = await getMediaBySearch(search);
+            set({isLoading: false, data: data.results})
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                set({isLoading: false, error: error.message})
+            }
+        }
     }
 }))
