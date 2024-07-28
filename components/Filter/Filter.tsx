@@ -1,7 +1,7 @@
 'use client';
 
-import { type Media, mediaType } from '@/types/media';
 import { useMedia } from '@/store';
+import { type Media, mediaType } from '@/types/media';
 
 export const Filter = () => {
   const [mediaTypeSearch, changeMediaTypeSearch, isShowFilter, isLoading] =

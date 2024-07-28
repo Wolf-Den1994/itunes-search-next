@@ -1,6 +1,13 @@
 {
   "extends": ["next", "prettier"],
   "rules": {
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "import/order": ["error", {
+      "groups": ["external", "builtin", "internal", "parent", "sibling", "index"],
+      "newlines-between": "never",
+      "alphabetize": {
+        "order": "asc"
+      }
+    }]
   }
 }

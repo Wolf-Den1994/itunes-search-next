@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { ArrowIcon } from '@/components/Icons';
-import { MediaResult } from '@/types';
 import { useMedia } from '@/store';
+import { MediaResult } from '@/types';
 
 export const List = () => {
   const mediaData = useMedia((state) => state.data);

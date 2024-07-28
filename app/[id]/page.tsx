@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
-import { MediaResponse } from '@/types/media';
-import { Card } from '@/components/Card';
 import React from 'react';
-import { ArrowIcon } from '@/components/Icons';
 import { BackButton } from '@/components/BackButton';
+import { Card } from '@/components/Card';
+import { ArrowIcon } from '@/components/Icons';
+import { MediaResponse } from '@/types/media';
 
 type Props = {
   params: {

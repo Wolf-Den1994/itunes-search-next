@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useCallback, type ChangeEvent } from 'react';
-import { useDebounce } from '@/hooks';
 import { Loader } from '@/components/Loader';
+import { useDebounce } from '@/hooks';
 import { useMedia } from '@/store';
 
 export const Search = () => {

@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { format } from 'date-fns';
+import Image from 'next/image';
 import { PropsWithChildren } from 'react';
-import { MediaResult } from '@/types';
 import { FavoriteIcon } from '@/components/Icons';
+import { MediaResult } from '@/types';
 
 type Props = Omit<
   MediaResult,
