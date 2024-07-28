@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback, type ChangeEvent } from "rea
 import { getMediaBySearch } from "@/services/getMedia";
 import { MediaResult } from "@/types/media";
 import { useDebounce } from "@/hooks";
+import { Loader } from "@/components/Loader";
 
 type Props = {
     onSearch: (value: MediaResult[]) => void;
@@ -43,7 +44,7 @@ export const Search = ({ onSearch }: Props) => {
     return (
         <>
             {isLoading ? (
-                <p>Loading...</p>
+                <Loader />
             ) : (
                 <input type="search" placeholder="Search..." value={searchValue}
                        onChange={handleChange}
