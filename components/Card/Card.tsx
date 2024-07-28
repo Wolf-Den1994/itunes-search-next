@@ -1,27 +1,34 @@
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { PropsWithChildren } from 'react';
 import { MediaResult } from '@/types';
-import { ArrowIcon, FavoriteIcon } from '@/components/Icons';
+import { FavoriteIcon } from '@/components/Icons';
 
-type Props = Omit<MediaResult, 'collectionId' | 'trackId'>;
+type Props = Omit<
+  MediaResult,
+  'collectionId' | 'collectionViewUrl' | 'trackId'
+> & {
+  mainClass: string;
+};
 
 export const Card = ({
   wrapperType,
   kind,
   collectionName,
-  collectionViewUrl,
   collectionPrice,
   currency,
   releaseDate,
   artworkUrl100,
-}: Props) => {
+  children,
+  mainClass,
+}: PropsWithChildren<Props>) => {
   return (
-    <div className='relative h-fit w-60 rounded-lg bg-gray-200 shadow'>
+    <div className={mainClass}>
       <div className='h-60 w-full'>
         <Image
           className='h-full w-full rounded-tl-lg rounded-tr-lg'
           src={artworkUrl100}
-          alt={`${collectionName} - ${collectionPrice}`}
+          alt={`${collectionName} - ${collectionPrice} ${currency}`}
           width={100}
           height={100}
           placeholder='blur'
@@ -40,15 +47,7 @@ export const Card = ({
           {format(releaseDate, 'yyyy.MM.dd')}
         </p>
         <div className='flex items-center justify-between'>
-          <a
-            href={collectionViewUrl}
-            className='inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white duration-300 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            {collectionPrice} ${currency}
-            <ArrowIcon />
-          </a>
+          {children}
           <div className='cursor-pointer text-white duration-300 hover:text-red-300'>
             <FavoriteIcon />
           </div>
