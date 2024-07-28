@@ -1,7 +1,7 @@
 import { MediaResponse } from "@/types";
 
-export const getMediaBySearch = async (search: string): Promise<MediaResponse> => {
-    const response = await fetch(`https://itunes.apple.com/search?term=${search}`, {
+export const getMediaBySearch = async (search: string, media: string): Promise<MediaResponse> => {
+    const response = await fetch(`https://itunes.apple.com/search?term=${search}&media=${media}`, {
         next: {
             revalidate: 60,
         }

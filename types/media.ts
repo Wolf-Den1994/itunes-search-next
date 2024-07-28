@@ -1,4 +1,5 @@
-export type Media = 'movie' | 'podcast' | 'music' | 'musicVideo' | 'audiobook' | 'shortFilm' | 'tvShow' | 'software' | 'ebook' | 'all'
+export const mediaType = ['all', 'movie', 'podcast', 'music', 'musicVideo', 'audiobook', 'shortFilm', 'tvShow', 'software', 'ebook'] as const;
+export type Media = typeof mediaType[number];
 
 export type MediaResponse = {
     resultCount: number;
@@ -7,6 +8,7 @@ export type MediaResponse = {
 
 export type MediaResult = {
     wrapperType: string;
+    kind: string;
     collectionId: number;
     trackId: number;
     collectionName: string;

@@ -13,6 +13,7 @@ export const List = () => {
                 <Card
                     key={`${media.collectionId}-${media.trackId}`}
                     wrapperType={media.wrapperType}
+                    kind={media.kind}
                     collectionName={media.collectionName}
                     collectionViewUrl={media.collectionViewUrl}
                     collectionPrice={media.collectionPrice}
