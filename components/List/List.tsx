@@ -1,14 +1,15 @@
+'use client'
+
 import { Card } from "@/components/Card";
 import { MediaResult } from "@/types";
+import { useMedia } from "@/store";
 
-type Props = {
-    media: MediaResult[]
-}
+export const List = () => {
+    const mediaData = useMedia((state) => state.data)
 
-export const List = ({ media }: Props) => {
     return (
         <div className="flex flex-row items-center justify-evenly flex-wrap gap-4">
-            {media.map((media: MediaResult) => (
+            {mediaData.map((media: MediaResult) => (
                 <Card
                     key={`${media.collectionId}-${media.trackId}`}
                     wrapperType={media.wrapperType}

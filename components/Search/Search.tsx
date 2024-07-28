@@ -1,37 +1,30 @@
 'use client'
 
 import { useState, useEffect, useMemo, useCallback, type ChangeEvent } from "react";
-import { getMediaBySearch } from "@/services/getMedia";
-import { MediaResult } from "@/types/media";
 import { useDebounce } from "@/hooks";
 import { Loader } from "@/components/Loader";
+import { useMedia } from "@/store";
 
-type Props = {
-    onSearch: (value: MediaResult[]) => void;
-}
-
-export const Search = ({ onSearch }: Props) => {
+export const Search = () => {
     const [searchValue, setSearchValue] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const debouncedSearch = useDebounce(searchValue, 600)
 
+    const [getMediaBySearch, isLoading] = useMedia((state) => [
+        state.getMediaBySearch, state.isLoading
+    ])
+
     const fetchMediaBySearch = useMemo(() => async () => {
-        setIsLoading(true);
         setError('')
 
         try {
-            onSearch([])
-            const media = await getMediaBySearch(searchValue)
-            onSearch(media.results)
+            await getMediaBySearch(searchValue)
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message)
             }
-        } finally {
-            setIsLoading(false);
         }
-    }, [searchValue, onSearch])
+    }, [searchValue])
 
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value), [])
 
