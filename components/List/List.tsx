@@ -17,6 +17,8 @@ export const List = () => {
                     collectionName={media.collectionName}
                     collectionViewUrl={media.collectionViewUrl}
                     collectionPrice={media.collectionPrice}
+                    currency={media.currency}
+                    releaseDate={media.releaseDate}
                     artworkUrl100={media.artworkUrl100}
                 />
             ))}

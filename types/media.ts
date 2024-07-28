@@ -15,4 +15,6 @@ export type MediaResult = {
     collectionViewUrl: string;
     artworkUrl100: string;
     collectionPrice: number;
+    currency: string;
+    releaseDate: string;
 }
