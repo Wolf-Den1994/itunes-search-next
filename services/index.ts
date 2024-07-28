@@ -1,1 +1,1 @@
-export * from './getMediaBySearch';
+export * from './getMedia';
