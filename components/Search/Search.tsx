@@ -1,8 +1,9 @@
 'use client'
 
-import {useState, useEffect, type ChangeEvent} from "react";
-import {getMediaBySearch} from "@/services/getMedia";
-import {MediaResult} from "@/types/media";
+import { useState, useEffect, useMemo, useCallback, type ChangeEvent } from "react";
+import { getMediaBySearch } from "@/services/getMedia";
+import { MediaResult } from "@/types/media";
+import { useDebounce } from "@/hooks";
 
 type Props = {
     onSearch: (value: MediaResult[]) => void;
@@ -12,6 +13,7 @@ export const Search = ({ onSearch }: Props) => {
     const [searchValue, setSearchValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const debouncedSearch = useDebounce(searchValue, 600)
 
     useEffect(() => {
         const fetchMediaBySearch = async () => {
@@ -32,7 +34,7 @@ export const Search = ({ onSearch }: Props) => {
         }
 
         fetchMediaBySearch().catch(console.error)
-    }, [searchValue, onSearch]);
+    }, [debouncedSearch, onSearch]);
 
     return (
         <>
