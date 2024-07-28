@@ -1,3 +1,11 @@
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: `iTunes search. About`,
+    };
+}
+
 export default function About() {
   return (
     <p className='mx-auto p-4 text-gray-700 sm:p-24'>
