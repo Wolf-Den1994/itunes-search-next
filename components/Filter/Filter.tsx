@@ -18,7 +18,7 @@ export const Filter = () => {
         <select
           value={mediaTypeSearch}
           onChange={(e) => changeMediaTypeSearch(e.target.value)}
-          className='block w-full rounded-lg border border-gray-300 bg-gray-500 p-2.5 text-sm text-gray-100 focus:border-blue-500 focus:ring-blue-500 sm:w-1/2'
+          className='h-41 block w-full rounded-lg border border-white bg-gray-400 p-2.5 text-sm text-white focus:border-blue-500 focus:ring-blue-500 sm:w-1/2'
         >
           {mediaType.map((media: Media) => (
             <option key={media} value={media}>

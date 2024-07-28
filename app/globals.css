@@ -26,4 +26,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .h-41 {
+    height: 41px;
+  }
 }

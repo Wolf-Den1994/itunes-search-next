@@ -10,7 +10,7 @@ export const List = () => {
   const mediaData = useMedia((state) => state.data);
 
   return (
-    <div className='flex flex-row flex-wrap items-center justify-evenly gap-4'>
+    <div className='flex flex-row flex-wrap items-center justify-evenly gap-4 pt-6 sm:pt-24'>
       {mediaData.map((media: MediaResult) => (
         <Card
           key={`${media.collectionId}-${media.trackId}`}

@@ -21,7 +21,7 @@ export const Navigation = ({ navLinks }: Props) => {
         <Link
           key={label}
           href={href}
-          className={`text-gray-300 duration-300 hover:text-gray-800 ${pathname === href ? 'visited:text-gray-800' : ''}`}
+          className={`text-gray-700 duration-300 hover:text-gray-300 ${pathname === href ? 'cursor-default visited:text-gray-300' : ''}`}
         >
           {label}
         </Link>

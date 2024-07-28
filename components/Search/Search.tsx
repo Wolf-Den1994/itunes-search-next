@@ -45,7 +45,7 @@ export const Search = () => {
           placeholder='Search...'
           value={searchValue}
           onChange={handleChange}
-          className='focus:ring-white-600 focus:border-white-600 p-2/2 block w-full rounded-lg border border-gray-400 bg-gray-500 p-2 text-sm text-gray-200 sm:w-1/2'
+          className='p-2/2 h-41 block w-full rounded-lg border border-white bg-gray-400 p-2 text-sm text-white placeholder-white focus:border-white focus:ring-white sm:w-1/2'
         />
       )}
       {error && <p>Oops, error: ${error}</p>}
