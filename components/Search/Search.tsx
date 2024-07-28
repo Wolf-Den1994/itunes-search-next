@@ -15,26 +15,30 @@ export const Search = ({ onSearch }: Props) => {
     const [error, setError] = useState('');
     const debouncedSearch = useDebounce(searchValue, 600)
 
-    useEffect(() => {
-        const fetchMediaBySearch = async () => {
-            setIsLoading(true);
-            setError('')
+    const fetchMediaBySearch = useMemo(() => async () => {
+        setIsLoading(true);
+        setError('')
 
-            try {
-                onSearch([])
-                const media = await getMediaBySearch(searchValue)
-                onSearch(media.results)
-            } catch (error: unknown) {
-                if (error instanceof Error) {
-                    setError(error.message)
-                }
-            } finally {
-                setIsLoading(false);
+        try {
+            onSearch([])
+            const media = await getMediaBySearch(searchValue)
+            onSearch(media.results)
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setError(error.message)
             }
+        } finally {
+            setIsLoading(false);
         }
+    }, [searchValue, onSearch])
 
-        fetchMediaBySearch().catch(console.error)
-    }, [debouncedSearch, onSearch]);
+    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value), [])
+
+    useEffect(() => {
+        if (debouncedSearch) {
+            fetchMediaBySearch().catch(console.error);
+        }
+    }, [debouncedSearch]);
 
     return (
         <>
@@ -42,7 +46,7 @@ export const Search = ({ onSearch }: Props) => {
                 <p>Loading...</p>
             ) : (
                 <input type="search" placeholder="Search..." value={searchValue}
-                       onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+                       onChange={handleChange}
                        className="bg-gray-500 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-white-600 focus:border-white-600 block w-1/2 p-2"/>
             )}
             {error && <p>Oops, error: ${error}</p>}
